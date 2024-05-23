@@ -1,0 +1,50 @@
+
+spring:
+  application:
+    name: ResourceServer
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/restaurant
+    username: root
+    password: Ab@230596
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  security:
+    oauth2:
+      resourceserver:
+#        opaquetoken:
+#          client-id: spring-boot
+#          client-secret: OY76kSNAh3km9wOdlAIVX7xPaIBjSuTj
+#          introspection-uri: http://localhost:9090/realms/Techiebroz/protocol/openid-connect/token/introspect
+        jwt:
+          issuer-uri: http://localhost:9090/realms/Techiebroz
+
+server:
+  port: 8000
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: spring-boot-backend
+      client-secret: gPXum6GxVlc0t6kYZdt4cpREqKwUXzUi
+
+
+keycloak-config:
+  realm: Techiebroz
+  server-url: http://127.0.0.1:9090
+  client-id: admin-cli
+  grant-type: password
+  name: peter
+  password: admin
+
+logging:
+  level:
+    org:
+      keycloak: DEBUG
+      springframework:
+        security: DEBUG

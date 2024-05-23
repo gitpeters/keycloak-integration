@@ -1,0 +1,31 @@
+{
+  "realm": "Techiebroz",
+  "auth-server-url": "http://127.0.0.1:9090",
+  "resource": "spring-boot-backend",
+  "credentials": {
+    "secret": "gPXum6GxVlc0t6kYZdt4cpREqKwUXzUi"
+  },
+  "http-method-as-scope": true,
+  "paths": [
+    {
+      "path": "/api/v1/restaurants/public/list",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/restaurants/public/menu/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/error/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/swagger-ui/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/v3/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    }
+  ]
+}
