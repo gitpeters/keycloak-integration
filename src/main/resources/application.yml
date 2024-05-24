@@ -2,11 +2,12 @@
 spring:
   application:
     name: ResourceServer
-
+  config:
+    import: optional:file:src/main/resources/env.properties
   datasource:
-    url: jdbc:mysql://localhost:3306/restaurant
-    username: root
-    password: Ab@230596
+    url: jdbc:mysql://localhost:3306/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,8 +20,8 @@ spring:
     oauth2:
       resourceserver:
 #        opaquetoken:
-#          client-id: spring-boot
-#          client-secret: OY76kSNAh3km9wOdlAIVX7xPaIBjSuTj
+#          client-id: ${KEYCLOAK_CLIENT_ID}
+#          client-secret: ${KEYCLOAK_CLIENT_SECRET}
 #          introspection-uri: http://localhost:9090/realms/Techiebroz/protocol/openid-connect/token/introspect
         jwt:
           issuer-uri: http://localhost:9090/realms/Techiebroz
@@ -30,17 +31,17 @@ server:
 springdoc:
   swagger-ui:
     oauth:
-      client-id: spring-boot-backend
-      client-secret: gPXum6GxVlc0t6kYZdt4cpREqKwUXzUi
+      client-id: ${KEYCLOAK_CLIENT_ID}
+      client-secret: ${KEYCLOAK_CLIENT_SECRET}
 
 
 keycloak-config:
-  realm: Techiebroz
+  realm: ${KEYCLOAK_REALM}
   server-url: http://127.0.0.1:9090
-  client-id: admin-cli
+  client-id: ${KEYCLOAK_ADMIN_CLIENT_ID}
   grant-type: password
-  name: peter
-  password: admin
+  name: ${KEYCLOAK_ADMIN_USERNAME}
+  password: ${KEYCLOAK_ADMIN_PASSWORD}
 
 logging:
   level:
