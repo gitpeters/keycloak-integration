@@ -17,7 +17,7 @@ public class KeycloakSecurityUtil {
     private String keycloakUserName;
     @Value("${keycloak-config.realm}")
     private String keycloakRealm;
-    @Value("${keycloak-config.client-id}")
+    @Value("${keycloak-config.client-admin-id}")
     private String keycloakClientId;
     @Value("${keycloak-config.grant-type}")
     private String keycloakGrantType;

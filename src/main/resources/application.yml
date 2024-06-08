@@ -38,7 +38,8 @@ springdoc:
 keycloak-config:
   realm: ${KEYCLOAK_REALM}
   server-url: http://127.0.0.1:9090
-  client-id: ${KEYCLOAK_ADMIN_CLIENT_ID}
+  client-id: ${KEYCLOAK_CLIENT_ID}
+  client-admin-id: ${KEYCLOAK_ADMIN_CLIENT_ID}
   grant-type: password
   name: ${KEYCLOAK_ADMIN_USERNAME}
   password: ${KEYCLOAK_ADMIN_PASSWORD}

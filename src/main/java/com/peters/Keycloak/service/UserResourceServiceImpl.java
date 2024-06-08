@@ -1,9 +1,11 @@
 package com.peters.Keycloak.service;
 
 import com.peters.Keycloak.dto.KeycloakUser;
+import com.peters.Keycloak.dto.UserRole;
 import com.peters.Keycloak.util.KeycloakSecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
+import org.keycloak.admin.client.resource.RoleScopeResource;
 import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
@@ -50,6 +52,14 @@ public class UserResourceServiceImpl implements UserResourceService {
         keycloak.realm(realm).users().get(userId).update(userRep);
         return user;
     }
+
+    @Override
+    public KeycloakUser getUser(String userId) {
+        Keycloak keycloak = keycloakSecurityUtil.getKeycloakInstance();
+        UserRepresentation userRep = keycloak.realm(realm).users().get(userId).toRepresentation();
+        return mapUser(userRep);
+    }
+
 
     @Override
     public String deleteUser(String userId) {
